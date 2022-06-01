@@ -1,0 +1,39 @@
+{
+  "persons": [
+    {
+      "name": "Arto Hellas",
+      "number": "040-123456",
+      "id": 1
+    },
+    {
+      "name": "Mary Poppendieck",
+      "number": "39-23-6423122",
+      "id": 4
+    },
+    {
+      "name": "Franco Massini",
+      "number": "12-88-96478",
+      "id": 6
+    },
+    {
+      "name": "Emma Jurado",
+      "number": "78-96-12698",
+      "id": 7
+    },
+    {
+      "name": "Sebastian Haunter",
+      "number": "89-42-13953",
+      "id": 8
+    },
+    {
+      "name": "Emil Kambrov",
+      "number": "23-56-96321",
+      "id": 9
+    },
+    {
+      "name": "Louis Tompson",
+      "number": "7485-6563",
+      "id": 10
+    }
+  ]
+}
