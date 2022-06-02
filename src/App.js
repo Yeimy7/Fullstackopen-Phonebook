@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Filter } from "./components/Filter";
+import { Notification } from "./components/Notification";
 import { PersonForm } from "./components/PersonForm";
 import { Persons } from "./components/Persons";
 import personsService from "./services/persons";
@@ -9,6 +10,8 @@ function App() {
   const [nameSearch, setNameSearch] = useState('')
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [successMessage, setSuccessMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     personsService
@@ -41,6 +44,12 @@ function App() {
         .create(personObject)
         .then(returnedPerson => {
           setPersons(persons.concat(returnedPerson))
+          setSuccessMessage(
+            `Added ${returnedPerson.name}`
+          )
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 3000)
           setNewName('')
           setNewNumber('')
         })
@@ -53,8 +62,23 @@ function App() {
           .update(person.id, changedPerson)
           .then(changed => {
             setPersons(persons.map(person => person.name !== newName ? person : changed))
+            setSuccessMessage(
+              `Changed number of ${person.name}`
+            )
+            setTimeout(() => {
+              setSuccessMessage(null)
+            }, 3000)
             setNewName('')
             setNewNumber('')
+          })
+          .catch(error => {
+            setErrorMessage(
+              `Information of ${person.name} has already been removed from server`
+            )
+            setTimeout(() => {
+              setErrorMessage(null)
+            }, 3000)
+            setPersons(persons.filter(p => p.name !== newName))
           })
       }
     }
@@ -70,6 +94,8 @@ function App() {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={successMessage} nameClass={'success'} />
+      <Notification message={errorMessage} nameClass={'error'} />
       <Filter nameSearch={nameSearch} handleNameFilter={handleNameFilter} />
       <h2>add a new</h2>
       <PersonForm addName={addName} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />

@@ -16,11 +16,6 @@
       "id": 6
     },
     {
-      "name": "Emma Jurado",
-      "number": "78-96-12698",
-      "id": 7
-    },
-    {
       "name": "Sebastian Haunter",
       "number": "89-42-13953",
       "id": 8
@@ -34,6 +29,11 @@
       "name": "Louis Tompson",
       "number": "7485-6563",
       "id": 10
+    },
+    {
+      "name": "Giorgia Farabella",
+      "number": "58-96-14023",
+      "id": 11
     }
   ]
 }
